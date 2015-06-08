@@ -102,6 +102,13 @@ log.d('debug msg');
 log.trace('trace msg');
 log.t('trace msg');
 ```
+You can use event handler for catch log events from different part of you code:
+
+```javascript
+log.on('log', function(log_data){
+	console.log(JSON.stringify(log_data));
+})
+```
 
 ## Contacts
 

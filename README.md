@@ -31,7 +31,7 @@ var log = require('./lib/sm-log');
 var m = 'MyModule';
 
 //setting 'trace' log level
-log.setLogLevel('T');
+log.level('T');
 
 //demo data
 var current_data = {hello: 'world'};
@@ -49,10 +49,16 @@ log.debug(current_data);
 log.info('info message', m);
 
 //you can output date and time
-//when event event happend
-log.setDateEnabled(true);
+//when event happend
+log.showDate(true);
 log.warn('warning message', m);
-log.setDateEnabled(false);
+log.showDate(false);
+
+//you can output line number
+//where log function was called
+log.showDate(true);
+log.warn('warning message', m);
+log.showDate(false);
 
 //you can output error message and call
 //callback of function

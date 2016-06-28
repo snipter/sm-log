@@ -272,6 +272,12 @@ Log.prototype = {
         }else{
             fs.appendFile(file_path, "\r\n" + text, function(err){if(err) console.log(err)});
         }
+    },
+
+    /*============ Create separate log object ============*/
+
+    createLog: function(){
+        return new Log();
     }
 }
 

@@ -16,6 +16,7 @@ describe('sm-log', function(){
 			expect(log.level).to.be.an('function');
 			expect(log.showDate).to.be.an('function');
 			expect(log.showLine).to.be.an('function');
+
 			expect(log.log).to.be.an('function');
 			expect(log.error).to.be.an('function');
 			expect(log.err).to.be.an('function');
@@ -29,6 +30,10 @@ describe('sm-log', function(){
 			expect(log.d).to.be.an('function');
 			expect(log.trace).to.be.an('function');
 			expect(log.t).to.be.an('function');
+
+			expect(log.on).to.be.an('function');
+			expect(log.createLog).to.be.an('function');
+
 		});
 
 	})

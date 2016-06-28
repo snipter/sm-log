@@ -1,75 +1,35 @@
-var log = require('./lib/sm-log');
+var chai = require('chai');
+var assert = chai.assert;
+var expect = chai.expect;
 
-//your file or module name
-var m = 'MyModule';
+var log = require('../index.js');
 
-log.addOutput({type: 'file', name: '%yyyy.mm.dd%.log', path: 'logs'});
+describe('sm-log', function(){
+	describe('basic tests', function(){
 
-//setting 'trace' log level
-log.level('T');
+		it('shoud be not empty', function(){
+			assert(log, 'log is empty');
+		});
 
-//checking event emiter
-log.on('log', function(log_data){
-	// console.log(JSON.stringify(log_data));
-})
+		it('shoud have required functions', function(){
+			expect(log.enabled).to.be.an('function');
+			expect(log.level).to.be.an('function');
+			expect(log.showDate).to.be.an('function');
+			expect(log.showLine).to.be.an('function');
+			expect(log.log).to.be.an('function');
+			expect(log.error).to.be.an('function');
+			expect(log.err).to.be.an('function');
+			expect(log.e).to.be.an('function');
+			expect(log.warning).to.be.an('function');
+			expect(log.warn).to.be.an('function');
+			expect(log.w).to.be.an('function');
+			expect(log.info).to.be.an('function');
+			expect(log.i).to.be.an('function');
+			expect(log.debug).to.be.an('function');
+			expect(log.d).to.be.an('function');
+			expect(log.trace).to.be.an('function');
+			expect(log.t).to.be.an('function');
+		});
 
-//demo data
-var current_data = {hello: 'world'};
-
-//with sm-log you can output
-//different string info
-log.trace('trace message');
-
-//sm-log can output not just 
-//string but objects too
-log.debug(current_data);
-
-//you can set module or 
-//file name in log output
-log.info('info message', m);
-
-//you can output date and time
-//when event event happend
-log.showDate(true);
-log.warn('warning message', m);
-log.showDate(false);
-
-//you can output date and time
-//when event event happend
-log.showLine(true);
-log.warn('warning message', m);
-log.showLine(false);
-
-//you can output error message and call
-//callback of function
-
-// function readSomeFile(cb){
-// 	var fs = require('fs');
-// 	fs.readFile('/some/file.txt', function(err, data){
-// 		if(err) return log.error(err, m, cb);
-// 		log.info('file read done', m, cb);
-// 	})
-// }
-// readSomeFile(function(){});
-
-//error msg
-log.error('error msg');
-log.err('error msg');
-log.e('error msg');
-
-//warning msg
-log.warning('warning msg');
-log.warn('warning msg');
-log.w('warning msg');
-
-//info msg
-log.info('info msg');
-log.i('info msg');
-
-//debug msg
-log.debug('debug msg');
-log.d('debug msg');
-
-//trace msg
-log.trace('trace msg');
-log.t('trace msg');
+	})
+});

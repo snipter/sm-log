@@ -56,14 +56,35 @@ Object.defineProperty(global, '__line', {
 /*============ Log class ============*/
 
 function Log(){
-    addLogShortLinks(this);
-    this._show_date = false;
-    this._show_line = true;
+    this._enabled = true;
+    this._showDate = false;
+    this._showLine = true;
     this._level = 0;
     this._outputs = [];
+
+    this.error = this.logError;
+    this.err = this.logError;
+    this.e = this.logError;
+
+    this.warning = this.logWarn;
+    this.warn = this.logWarn;
+    this.w = this.logWarn;
+
+    this.info = this.logInfo;
+    this.i = this.logInfo;
+
+    this.debug = this.logDebug;
+    this.d = this.logDebug;
+
+    this.trace = this.logTrace;
+    this.t = this.logTrace;
 }
 
 Log.prototype = {
+    enabled: function(enabled){
+        this._enabled = enabled;
+    },
+
     level: function(level){
         if(level !== undefined){
             this._level = this.logLevelToInt(level);
@@ -73,16 +94,16 @@ Log.prototype = {
 
     showDate: function(enabled){
         if(enabled !== undefined){
-            this._show_date = enabled;
+            this._showDate = enabled;
         }
-        return this._show_date;
+        return this._showDate;
     },
 
     showLine: function(enabled){
         if(enabled !== undefined){
-            this._show_line = enabled;
+            this._showLine = enabled;
         }
-        return this._show_line;
+        return this._showLine;
     },
      
     logError: function(data, module, cb){
@@ -107,15 +128,16 @@ Log.prototype = {
      
     log: function(data, level, module, cb){
         if(!data) return;
+        if(!this._enabled) return;
         if(module && (typeof module === "function")) {cb = module; module = null}
         var data_str = typeof data !== "string" ? JSON.stringify(data) : data;
 
         var line = __stack[2].getLineNumber();
         var text = "";
-        if(this._show_date) text += "["+this.todayDateStr()+"]";
+        if(this._showDate) text += "["+this.todayDateStr()+"]";
         text += "["+level+"]";
         if(module) text += "["+module+"]";
-        if(this._show_line) text += "["+line+"]";
+        if(this._showLine) text += "["+line+"]";
         text += ": " + data_str;
         
         if(this._level <= this.logLevelToInt(level)) this.logTextWithLevel(text, level);
@@ -251,25 +273,6 @@ Log.prototype = {
             fs.appendFile(file_path, "\r\n" + text, function(err){if(err) console.log(err)});
         }
     }
-}
-
-function addLogShortLinks(self){
-    self.error = self.logError;
-    self.err = self.logError;
-    self.e = self.logError;
-
-    self.warning = self.logWarn;
-    self.warn = self.logWarn;
-    self.w = self.logWarn;
-
-    self.info = self.logInfo;
-    self.i = self.logInfo;
-
-    self.debug = self.logDebug;
-    self.d = self.logDebug;
-
-    self.trace = self.logTrace;
-    self.t = self.logTrace;
 }
 
 module.exports = new Log();

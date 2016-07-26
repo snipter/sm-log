@@ -2,14 +2,15 @@ var chai = require('chai');
 var assert = chai.assert;
 var expect = chai.expect;
 
-var sharedLog = require('../index.js');
-
 var Log = require('../log/log.js');
 var ConsoleOutput = require('../outputs/console.output.js');
 var FileOutput = require('../outputs/file.output.js');
 var FirebaseOutput = require('../outputs/firebase.output.js');
 
 describe('Index', function(){
+
+	var sharedLog = require('../index.js');
+	var m = 'demoModule';
 
 	it('shoud have log instance', function(){
 		expect(sharedLog.Log).to.be.equal(Log);

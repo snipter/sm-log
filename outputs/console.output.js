@@ -15,8 +15,8 @@ ConsoleOutput.prototype = {
 
 	log: function(recordData){
 		if(this.enabled === false) return;
-		if(this.level > logData.level) return;
-		var recordDataStr = utils.logRecordDataToStr(recordData);
+		if(this.level > recordData.level) return;
+		var recordDataStr = utils.logRecordDataToStr(recordData, {date: this.date, line: this.line});
 		if(this.colors) this.logToConsoleWithColor(recordDataStr, recordData.level);
 		else this.logToConsole(recordDataStr);
 	},

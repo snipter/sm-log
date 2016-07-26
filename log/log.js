@@ -85,6 +85,7 @@ Log.prototype = {
             ,module: module
             ,date: new Date()
         };
+        recordData.text = utils.logRecordDataToStr(recordData);
 
         this.logToOutpus(recordData);
         this.emit('log', recordData);

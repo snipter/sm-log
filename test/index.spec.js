@@ -2,10 +2,10 @@ var chai = require('chai');
 var assert = chai.assert;
 var expect = chai.expect;
 
-var Log = require('../log/log.js');
-var ConsoleOutput = require('../outputs/console.output.js');
-var FileOutput = require('../outputs/file.output.js');
-var FirebaseOutput = require('../outputs/firebase.output.js');
+var Log = require('../lib/log.js');
+var ConsoleOutput = require('../lib/outputs/consoleOutput.js');
+var FileOutput = require('../lib/outputs/fileOutput.js');
+var FirebaseOutput = require('../lib/outputs/firebaseOutput.js');
 
 describe('Index', function(){
 

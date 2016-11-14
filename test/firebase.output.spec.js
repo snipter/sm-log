@@ -2,7 +2,7 @@ var chai = require('chai');
 var assert = chai.assert;
 var expect = chai.expect;
 
-var FirebaseOutput = require('../outputs/firebase.output.js');
+var FirebaseOutput = require('../lib/outputs/firebaseOutput.js');
 
 describe('FirebaseOutput()', function(output){
 	

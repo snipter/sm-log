@@ -2,7 +2,7 @@ var chai = require('chai');
 var assert = chai.assert;
 var expect = chai.expect;
 
-var utils = require('../utils/utils.js');
+var utils = require('../lib/utils.js');
 
 describe('Utils', function(){
 

@@ -2,8 +2,8 @@ var chai = require('chai');
 var assert = chai.assert;
 var expect = chai.expect;
 
-var Log = require('../log/log.js');
-var utils = require('../utils/utils.js');
+var Log = require('../lib/log.js');
+var utils = require('../lib/utils.js');
 
 
 /*============ Tests ============*/

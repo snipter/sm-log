@@ -2,7 +2,7 @@ var chai = require('chai');
 var assert = chai.assert;
 var expect = chai.expect;
 
-var ConsoleOutput = require('../outputs/console.output.js');
+var ConsoleOutput = require('../lib/outputs/consoleOutput.js');
 
 describe('ConsoleOutput()', function(){
 
